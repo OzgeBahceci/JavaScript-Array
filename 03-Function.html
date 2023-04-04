@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+
+      var dizi = [];
+      var pozitifDizi = [];
+      var negatifDizi = [];
+      var pozitifToplam =0;
+      var negatifToplam =0;
+
+      function diziElamanlariAl() {
+        var deger = parseInt(document.getElementById("deger").value);
+        //alert(deger);
+        dizi.push(deger);
+        if(deger >=0){
+          pozitifDizi.push(deger);
+          pozitifToplam += deger; 
+        }
+        else if(deger <0){
+          negatifDizi.push(deger);
+          negatifToplam += deger;
+        }
+        diziElemanlariniGoster();
+
+        document.getElementById("deger").value="";
+      }
+
+      function diziElemanlariniGoster() {
+        console.log('--------------------------------------------------');
+
+        console.log('Dizinin elemanları: ');
+        //dizi.sort();
+        resultHTML = "";
+        for (i = 0; i < dizi.length; i++) {
+          console.log(dizi[i]);
+        resultHTML = resultHTML + dizi[i]+" ";
+        }
+        document.getElementById('results').innerHTML= resultHTML;
+        negatifdiziElemanlariniGoster();
+        pozitifdiziElemanlariniGoster();
+        console.log('Pozitif Toplam : '+ pozitifToplam);
+        console.log('Negatif Toplam : '+ negatifToplam);
+      }
+
+      function negatifdiziElemanlariniGoster() {
+        console.log('Nagatif Dizinin elemanları: ');
+        negatifDizi.sort();
+        for (i = 0; i < negatifDizi.length; i++) {
+          console.log(negatifDizi[i]);
+        }
+      }
+      function pozitifdiziElemanlariniGoster() {
+        console.log('Pozitif Dizinin elemanları: ');
+        pozitifDizi.sort();
+        for (i = 0; i < pozitifDizi.length; i++) {
+          console.log(pozitifDizi[i]);
+        }
+      }
+
+    </script>
+  </head>
+  <h1>Fonksiyonlar</h1>
+  Dizi elemanı gir:
+  <input type="text" id="deger" /><br />
+  <br />
+  <input type="button" value="Diziye ekle" onclick="diziElamanlariAl()" /><br />
+  <br />
+  Dizi elemanları:
+  <span id="results"></span>
+</html>
